@@ -1,9 +1,12 @@
-How to use
-Clone the repository with git clone
-Copy .env.example file to .env and edit database credentials there
-Add L5_SWAGGER_GENERATE_ALWAYS=true to .env
-Run composer install
-Run php artisan key:generate
-Run php artisan migrate
-Run php artisan serve
-Open main url/api/v1 to use swagger ui
+# Laravel Api documenation wiht Swagger
+
+## How to use
+
+- Clone the repository with __git clone__
+- Copy __.env.example__ file to __.env__ and edit database credentials there
+- Add __.L5_SWAGGER_GENERATE_ALWAYS=true__ to __.env__
+- Run __composer install__
+- Run __php artisan key:generate__
+- Run __php artisan migrate__
+- Run __php artisan serve__
+- Open main __.url/api/v1__ to use swagger documentation
