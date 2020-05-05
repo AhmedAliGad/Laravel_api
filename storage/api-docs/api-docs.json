@@ -1,0 +1,257 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Blog API",
+        "description": "Blog API",
+        "contact": {
+            "name": "Ahmed Ali Gad",
+            "url": "https://www.linkedin.com/in/ahmed-gad-60141a122/"
+        },
+        "license": {
+            "name": "Developed by Ahmed",
+            "url": "https://www.linkedin.com/in/ahmed-gad-60141a122/"
+        },
+        "version": "1.0"
+    },
+    "host": "127.0.0.1:8000",
+    "basePath": "/api",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Add New User",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "in": "header",
+                        "description": "App Language",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "ar",
+                            "en"
+                        ]
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "User Name",
+                        "required": true,
+                        "type": "string",
+                        "format": "varchar"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "User email",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "User Password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "formData",
+                        "description": "Confirm Password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "description": "User Image",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Login",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "in": "header",
+                        "description": "App Language",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "ar",
+                            "en"
+                        ]
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "User Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "User Password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Logout",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Categories List",
+                "operationId": "get_categories",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/categories/{id}/": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Show Category Posts",
+                "operationId": "category_posts",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Category ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/posts/{id}/": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Show Post Details",
+                "operationId": "show_post",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "in": "header",
+                        "description": "App Language",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "ar",
+                            "en"
+                        ]
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
